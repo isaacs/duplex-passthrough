@@ -1,0 +1,23 @@
+{
+  "name": "duplex-passthrough",
+  "description": "like a passthrough, but in both directions",
+  "version": "0.0.0",
+  "license": "BSD",
+  "scripts": {
+    "test": "node t.js"
+  },
+  "author": "Isaac Z. Schlueter <i@izs.me>",
+  "main": "dp.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/isaacs/duplex-passthrough"
+  },
+  "keywords": [
+    "stream",
+    "passthrough",
+    "duplex"
+  ],
+  "bugs": {
+    "url": "https://github.com/isaacs/duplex-passthrough/issues"
+  }
+}
