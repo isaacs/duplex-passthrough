@@ -1,7 +1,7 @@
 {
   "name": "duplex-passthrough",
   "description": "like a passthrough, but in both directions",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "BSD",
   "scripts": {
     "test": "node t.js"
