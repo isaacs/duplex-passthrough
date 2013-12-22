@@ -39,21 +39,43 @@ stream.read(0);
   };
 
 
-      DuplexPassThrough.prototype.on = function(ev, fn) {
+      DuplexPassThrough.prototype._ee = function(method, ev, fn) {
     switch (ev) {
   case 'data':
   case 'end':
   case 'readable':
-return this._reader.on(ev, fn);
+return this._reader[method](ev, fn);
   case 'drain':
   case 'finish':
-return this._writer.on(ev, fn);
+return this._writer[method](ev, fn);
   default:
-return Duplex.prototype.on.call(this, ev, fn);
+return Duplex.prototype[method].call(this, ev, fn);
     }
       };
 
-DuplexPassThrough.prototype.addListener = DuplexPassThrough.prototype.on;
+DuplexPassThrough.prototype.listeners = function(event) {
+    this._ee('listeners', event);
+};
+
+DuplexPassThrough.prototype.addListener = function(event, listener) {
+    this._ee('addListener', event, listener);
+};
+
+DuplexPassThrough.prototype.removeListener = function(event, listener) {
+    this._ee('removeListener', event, listener);
+};
+
+DuplexPassThrough.prototype.removeAllListener = function(event) {
+    this._ee('removeAllListener', event);
+};
+
+DuplexPassThrough.prototype.on = function(event, listener) {
+    this._ee('on', event, listener);
+};
+
+DuplexPassThrough.prototype.once = function(event, listener) {
+    this._ee('once', event, listener);
+};
 
   DuplexPassThrough.prototype.pipe = function(dest, opts) {
 return this._reader.pipe(dest, opts);
