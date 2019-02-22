@@ -14,18 +14,18 @@ util.inherits(DuplexPassThrough, Duplex);
 return new DuplexPassThrough(options);
 
 
-this._reader = new PassThrough(options);
-this._writer = new PassThrough(options);
-Duplex.call(this, options);
+  this._reader = new PassThrough(options);
+  this._writer = new PassThrough(options);
+  Duplex.call(this, options);
 
   if (stream)
 this.wrapStream(stream);
 
-this._reader.on('error', this.emit.bind(this));
-this._writer.on('error', this.emit.bind(this));
+  this._reader.on('error', this.emit.bind(this));
+  this._writer.on('error', this.emit.bind(this));
 
-this._readableState = this._reader._readableState;
-this._writableState = this._writer._writableState;
+  this._readableState = this._reader._readableState;
+  this._writableState = this._writer._writableState;
     }
 
 
